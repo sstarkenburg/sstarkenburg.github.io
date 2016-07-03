@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sam Starkenburg personal site">
+    <meta name="author" content="Sam Starkenburg">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Sam Starkenburg</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poiret+One">
+    <link href="cover.css" rel="stylesheet">
+    <link href="ghub.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <!-- <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Sam Starkenburg</h3>
+              <nav>
+                  <ul class="navbar-inverse navbar-fixed-top masthead-nav" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                    <li role="presentation"><a href="#htpc" aria-controls="profile" role="tab" data-toggle="tab">Virtualized HTPC</a></li>
+                    <li role="presentation"><a href="#otherprojects" aria-controls="messages" role="tab" data-toggle="tab">Other VMs and projects</a></li>
+                  </ul>
+              </nav>
+            </div>
+          </div> -->
+
+
+          <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Starkenburg</a>
+              </div>
+              <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav" role="tablist">
+                  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                  <li role="presentation"><a href="#htpc" aria-controls="profile" role="tab" data-toggle="tab">Virtualized HTPC</a></li>
+                  <li role="presentation"><a href="#otherprojects" aria-controls="messages" role="tab" data-toggle="tab">Other VMs and projects</a></li>
+                </ul>
+              </div><!--/.nav-collapse -->
+            </div>
+          </nav>
+
+
+
+
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+                <div id="intro" class="row">
+                    <div class="col-md-5">
+                        <img src="sam.jpg" alt="Picture of Sam" class="img-circle img-responsive">
+                    </div>
+                    <div class="col-md-6">
+                        <h1>Sam Starkenburg</h1>
+                        <p class="lead">With a deep appetite for Python, virtualization, Linux and Windows, I've made it my mission to devour as much knowledge as I can.</p>
+                        <p><a class="btn btn-success" href="https://www.linkedin.com/in/sam-starkenburg-47a92270" role="button">Visit my Linkedin</a></p>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="htpc">
+                <p>
+                    <h1>HVHTPC Project</h1>
+                    <h2>Hypervisor Virtual Home Theater PC</h2>
+                    <h3>Design Goals</h3>
+                    <ul>
+                        <li>Set up a fully functional hypervisor that can host VMs of all types</li>
+                        <ul>
+                            <li>Linux, Windows, etc.</li>
+                        </ul>
+                        <li>Use compact hardware that is not obtrusive in a home theater</li>
+                        <li>Set up one of the VMs with video passthrough for a HTPC</li>
+                        <ul>
+                            <li>Original goal was to do this with the Intel graphics. This is theoretically possible, but I wasn't able to implement this at the time of the project.</li>
+                            <li>Due to the previous point, a discrete GPU was purchased in place of a 4 port NIC</li>
+                        </ul>
+                    </ul>
+                    <h3>Terminology</h3>
+                    <ul>
+                        <li>VM -- A Virtual Machine, an operating system running in software emulating dedicated hardware</li>
+                        <li>VT-x -- Intel’s base virtualization technology, available in most modern Intel CPUs</li>
+                        <li>VT-d -- Intel virtualization technology that allows for directed I/O to a VM, available on most non-K Intel CPUs above the i5 product line</li>
+                        <li>iommu -- Input/Output memory management unit, a technology to give VMs dedicated hardware access, such as PCI-passthrough</li>
+                    </ul>
+                    <h3>Hardware used:</h3>
+                    <ul>
+                        <li>Intel Core i5 4460</li>
+                        <ul>
+                            <li>Important to use and i5 or above due to the need for VT-d and other virtualization technologies.</li>
+                            <li>More cores are also good for more VMs</li>
+                        </ul>
+                        <li>16GB of RAM</li>
+                        <ul>
+                            <li>The more RAM the better for having a larger number of VMs</li>
+                        </ul>
+                        <li>ASRock B85M-ITX motherboard</li>
+                        <ul>
+                            <li>Chosen due to ASRock being better with iommu in my research.</li>
+                        </ul>
+                        <s><li>4 Port Gigabit NIC</li>
+                        <ul>
+                            <li>Allow 4 VMs to have dedicated network access, so that they are not bottlenecked by bridging through one port</li></s>
+                            <li>Due to the fact that I had use a dedicated video card for video output, this was omitted from the build. However, this does not seem to limit the performance in any way.</li>
+                        </ul>
+                        <s><li>PNY Nvidia GT 730</li>
+                        <ul>
+                            <li>GPU to pass through to the VM</li></s>
+                            <li>Nvidia is supposedly subverting the use of consumer GPUs in virtual machines, so some workarounds are required</li>
+                        </ul>
+                        <li>XFX R5 220</li>
+                        <ul>
+                            <li>Has UEFI, which is helpful for passthrough</li>
+                        </ul>
+                        <li>Less specific hardware</li>
+                        <ul>
+                            <li>Silverstone Milo ML05B</li>
+                            <ul>
+                                <li>Best bang for the buck HTPC case I could find that fit in my goal of being non-obtrusive</li>
+                            </ul>
+                            <li>Silverstone SFX ST30SF 300W PSU</li>
+                            <ul>
+                                <li>Smallest/cheapest SFX PSU I could find from a reliable manufacturer</li>
+                            </ul>
+                            <li>Cryorig C7 cooler</li>
+                            <ul>
+                                <li>Due to the computer sitting in a TV cabinet with limited airflow, I decided to get a better cooler to deal with the limited airflow</li>
+                            </ul>
+                            <li>Storage</li>
+                            <ul>
+                                <li>64GB SSD for the hypervisor</li>
+                                <li>Larger 128GB SSD for the guest virtual disks</li>
+                            </ul>
+                        </ul>
+                    </ul>
+                    <h3>Steps</h3>
+                    <ol>
+                        <li>Install Fedora OS</li>
+                        <ul>
+                            <li>Nothing different from any other base install</li>
+                        </ul>
+                        <li>Follow the steps from the Fedora wiki <a href="https://fedoraproject.org/wiki/Getting_started_with_virtualization">here</a></li>
+                        <li>https://wiki.centos.org/TipsAndTricks/WindowsShares #3</li>
+                        <li>https://wiki.centos.org/HowTos/KVM the bridging part</li>
+                        <ul>
+                            <li>make sure it says DEVICE not NAME for the br0 config</li>
+                        </ul>
+                        <li>https://fedoraproject.org/wiki/Using_UEFI_with_QEMU</li>
+                        <li>http://kodi.wiki/view/HOW-TO:Autostart_XBMC_for_Linux</li>
+                        <li>http://vfio.blogspot.com/</li>
+                        <li>http://kodi.wiki/view/Settings/System</li>
+                    </ol>
+                    <h3>Potential steps</h3>
+                    <ul>
+                        <li>Give qemu user access to network shares</li>
+                    </ul>
+                    <h3>Problems Encountered</h3>
+                    <ul>
+                        <li>GPU compatibility</li>
+                        <ul>
+                            <li>Theoretically the Intel integrated gpu should work, but it’s not quite possible in the real world yet (as far as I can tell)</li>
+                            <li>Due to this, I had to cut the NIC, but bridging is working just fine</li>
+                            <li>Nvidia has supposedly been making it so that their consumer gpus don’t work with passthrough, in favor of their enterprise models</li>
+                            <li>Kernel and software version available in repos</li>
+                            <li>Many server versions are made for reliability, but that means keeping back software versions, so many distributions are shipped with a 3.x kernel</li>
+                        </ul>
+                    </ul>
+                </p>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="otherprojects">
+                Coming soon!
+            </div>
+          </div>
+
+        </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <a href="mailto:sam@starkenburg.net">Sam@Starkenburg.net</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/flick/jquery-ui.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <!-- <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script> -->
+    <!-- <script src="../../dist/js/bootstrap.min.js"></script> -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+  </body>
+</html>
