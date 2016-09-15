@@ -1,2 +1,2 @@
 # sstarkenburg.github.io
-Personal website
+My personal website, accessible at [Starkenburg.net](http://starkenburg.net) 
